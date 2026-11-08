@@ -1,26 +1,101 @@
-# TRACEY — Personal Journal
+# TRACEY — My Life. My Stories. My World.
 
-A responsive, multi-page editorial personal website.
+A personal editorial website built with static HTML, CSS and vanilla JavaScript. It is hosted on GitHub Pages and published by the existing GitHub Actions workflow. No server, database, framework, paid hosting, Supabase, Cloudflare or Firebase is used.
 
 ## Pages
-- Home
-- About
-- Journal and sample article
-- Lifestyle
-- Gallery
-- Contact
-- Follow TRACEY
+Home, About Me, My Blog, Lifestyle, My Gallery, Follow Me, Contact, individual article view (`article.html?slug=...`) and a publishing guide at `admin.html`. The admin guide is intentionally not linked in the public navigation and is not an authentication system.
 
-## Technology
-Static HTML, CSS and vanilla JavaScript. No Supabase, database, API keys or build step required.
+## Publish an article (Android or desktop)
+1. Open [content/posts.json](content/posts.json) in the GitHub repository and tap the pencil icon.
+2. Add a new object to the JSON array. Use a unique lowercase slug with hyphens.
+3. Set `"status": "draft"` while preparing it. Change to `"published"` only when ready.
+4. Use plain text blocks in `body`; supported types are `paragraph`, `heading`, and `quote`. Do not paste HTML.
+5. Commit the change to `main`. GitHub Actions deploys after a successful push.
 
-## Local preview
-Open `index.html` in a browser. All pages share `styles.css` and `script.js`.
+Example article:
+```json
+{
+  "id": "story-001",
+  "title": "A title written by Tracey",
+  "slug": "a-title-written-by-tracey",
+  "category": "Everyday Life",
+  "subcategory": "",
+  "featuredImage": "assets/uploads/my-photo.jpg",
+  "imageAlt": "A factual description of the photograph",
+  "publishedAt": "2026-11-08",
+  "excerpt": "A short introduction written by Tracey.",
+  "status": "draft",
+  "body": [
+    {"type": "paragraph", "text": "The first paragraph in Tracey's own words."},
+    {"type": "heading", "text": "A section heading"},
+    {"type": "paragraph", "text": "Another paragraph."},
+    {"type": "quote", "text": "A quotation Tracey has permission to share."}
+  ]
+}
+```
 
-## Important notes
-- The contact form opens the visitor's default email application. It does not store or transmit submissions itself.
-- Social profile URLs and personal biography details are intentionally not invented.
-- Starter journal stories are sample content and can be replaced with TRACEY's own writing.
-- Images load from Unsplash over the internet.
-- This backend-free version does not include secure admin login, visitor accounts, persistent comments or newsletter storage.
-- A GitHub Actions workflow has been added to publish the static site with GitHub Pages when Pages deployment is available for the repository.
+Only published posts are rendered on the public website. Draft content is not included in cards, search or article pages.
+
+## Upload a photograph
+1. Open [assets/uploads](assets/uploads) in GitHub.
+2. Choose **Add file → Upload files** and select the photograph on your phone.
+3. Commit the upload. Use a compressed JPG, PNG or WebP and a descriptive filename.
+4. Copy its repository path, such as `assets/uploads/my-photo.jpg`.
+5. Add the path to an article's `featuredImage`, or add an entry to `content/gallery.json`:
+```json
+[
+  {"image":"assets/uploads/my-photo.jpg","alt":"A short factual image description","caption":"Optional caption"}
+]
+```
+All displayed images use repository-relative paths. The site accepts only paths under `assets/uploads/`.
+
+## Update the biography, email and social links
+Edit [content/settings.json](content/settings.json):
+```json
+{
+  "biography": "Biography written and approved by Tracey.",
+  "contactEmail": "tracey@example.com",
+  "social": {
+    "Instagram": "https://www.instagram.com/your-account/",
+    "Facebook": "https://www.facebook.com/your-account/"
+  },
+  "giscus": {
+    "repo": "jgjhnb9-coder/TRACEY-",
+    "repoId": "",
+    "category": "",
+    "categoryId": "",
+    "theme": "light"
+  }
+}
+```
+Replace the example email and social URLs with verified details or leave them blank. The public pages do not show invented profile links or contact details. Biography text is not displayed until the site biography component is configured for it; About page currently uses an empty state until a verified biography is provided.
+
+## Categories and lifestyle
+Edit [content/categories.json](content/categories.json). Categories can be added or removed without deleting article data. Articles keep their saved category text even if a category is later removed.
+
+## Giscus comments setup
+1. Enable **Discussions** in the repository's GitHub Settings → General → Features.
+2. Open [giscus.app](https://giscus.app/) and enter `jgjhnb9-coder/TRACEY-`.
+3. Follow the compatibility checks and install/authorize the Giscus GitHub App for this repository if prompted.
+4. Select a Discussions category (commonly Announcements or General) and copy the actual **Repository ID** and **Category ID** generated by Giscus.
+5. Paste those exact values into `content/settings.json` as `giscus.repoId`, `giscus.category` and `giscus.categoryId`. Do not guess IDs.
+6. Commit the settings. Comments appear only on individual article pages. Each discussion is mapped by the article's unique slug using Giscus' specific-term mapping.
+7. Visitors may need to sign in to GitHub to comment.
+
+Until both actual IDs and the category are configured, the article page explains that comments are not yet enabled. The site does not claim comments are live before configuration. Giscus requires a public GitHub repository with Discussions enabled and a compatible category; check its current setup instructions if the repository is not accepted.
+
+## Who can publish?
+GitHub repository permissions are the access control. The repository owner, `jgjhnb9-coder`, retains owner privileges. To let Tracey publish, the owner can add her verified GitHub account as a collaborator with **Write** access in Settings → Collaborators and teams. Use the narrowest access that allows editing and publishing. Do not change ownership or share passwords. Anyone with write access can change website content and publish it.
+
+The `admin.html` page is only a convenient set of links and instructions; it does not secure the repository. Never put GitHub tokens, passwords or private credentials in website files.
+
+## Deployment
+The existing `.github/workflows/static.yml` workflow was retained. It publishes the repository root to GitHub Pages on pushes to `main` and on manual workflow dispatch. Check the repository's **Actions** tab for the run status. In **Settings → Pages**, ensure the source is configured for GitHub Actions. The public project-site URL is normally `https://jgjhnb9-coder.github.io/TRACEY-/` once Pages is enabled and the workflow succeeds.
+
+## Technical notes
+- Static HTML/CSS/vanilla JS only; no build command or external backend.
+- Article text is inserted with DOM text nodes, never interpreted as HTML.
+- External profile URLs are accepted only over HTTPS.
+- Article image paths are limited to safe relative paths under `assets/uploads/`.
+- Contact uses a `mailto:` link and does not store or transmit messages on a server.
+- Search and category filters run in the visitor's browser.
