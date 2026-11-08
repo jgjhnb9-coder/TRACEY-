@@ -1,24 +1,12 @@
 # TRACEY — My Life. My Stories. My World.
 
-A personal lifestyle and storytelling website built with React, TypeScript, Vite and Supabase.
+A personal lifestyle and storytelling website built with React, TypeScript and Vite.
 
 ## Local development
 
 1. Install Node.js 20.19+ or 22.12+.
 2. Run `npm install`.
-3. Copy `.env.example` to `.env`.
-4. Add your Supabase project URL and publishable/anon key.
-5. Run `npm run dev`.
-
-## Supabase setup
-
-1. Create or select a Supabase project.
-2. Run `supabase/migrations/001_initial_schema.sql` in the Supabase SQL Editor.
-3. Create the first administrator using Supabase Authentication.
-4. Copy that user's UUID and run the admin-grant statement at the bottom of the migration (replace the placeholder UUID).
-5. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to your local environment and deployment environment.
-
-Never put a Supabase service-role key in frontend environment variables. The browser uses only the publishable/anon key; authorization is enforced by RLS.
+3. Run `npm run dev`.
 
 ## Build
 
@@ -27,8 +15,10 @@ Never put a Supabase service-role key in frontend environment variables. The bro
 
 ## Deployment
 
-Deploy the repository to Netlify or Vercel with build command `npm run build` and publish directory `dist`. Configure the two `VITE_SUPABASE_*` environment variables in the deployment dashboard. Configure SPA fallback/rewrite to `/index.html` for client-side routes.
+Deploy to Netlify or Vercel with build command `npm run build` and publish directory `dist`. Configure SPA fallback/rewrite to `/index.html` for client-side routes.
 
-## Current implementation status
+## Current scope
 
-The initial app foundation, responsive editorial design, public routes, Supabase client, first database migration and initial RLS policies are in place. Demo editorial cards are placeholders until real posts are published. The admin area currently authenticates and checks the database-backed admin profile; full content-management forms, media upload workflow, comment moderation, newsletter unsubscribe endpoint, SEO sitemap generation and end-to-end testing remain follow-up implementation work. Contact and newsletter forms require the Supabase migration and project configuration before they can persist data.
+The initial website uses static demonstration content and does not require Supabase. This keeps setup simple while the design and public pages are developed.
+
+A static frontend alone cannot provide secure shared admin accounts, multi-device publishing, durable public media uploads, or reliable email delivery. Those capabilities can be added later with a backend or dedicated services only if needed. Do not treat a browser-only admin preview or local storage as secure production content management.
