@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Fashion",
+    "description": "Style, clothing and personal expression."
+  },
+  {
+    "name": "Beauty",
+    "description": "Beauty, care and routines."
+  },
+  {
+    "name": "Travel",
+    "description": "Places, journeys and discoveries."
+  },
+  {
+    "name": "Food",
+    "description": "Food, recipes and dining experiences."
+  },
+  {
+    "name": "Entertainment",
+    "description": "Film, music and culture."
+  },
+  {
+    "name": "Everyday Life",
+    "description": "Ordinary moments and daily living."
+  },
+  {
+    "name": "Inspiration",
+    "description": "Ideas, reflections and encouragement."
+  },
+  {
+    "name": "Personal Experiences",
+    "description": "Stories and experiences shared in Tracey's own words."
+  }
+]
