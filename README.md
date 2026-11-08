@@ -68,7 +68,7 @@ Edit [content/settings.json](content/settings.json):
   }
 }
 ```
-Replace the example email and social URLs with verified details or leave them blank. The public pages do not show invented profile links or contact details. Biography text is not displayed until the site biography component is configured for it; About page currently uses an empty state until a verified biography is provided.
+Replace the example email and social URLs with verified details or leave them blank. The public pages do not show invented profile links or contact details. The About page displays the biography paragraphs from this field as plain text. Leave it blank to retain the empty state.
 
 ## Categories and lifestyle
 Edit [content/categories.json](content/categories.json). Categories can be added or removed without deleting article data. Articles keep their saved category text even if a category is later removed.
