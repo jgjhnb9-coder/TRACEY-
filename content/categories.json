@@ -1,34 +1,66 @@
 [
   {
     "name": "Fashion",
-    "description": "Style, clothing and personal expression."
+    "description": "Style, clothing and personal expression.",
+    "subcategories": [
+      "Personal Style",
+      "Outfit Ideas"
+    ]
   },
   {
     "name": "Beauty",
-    "description": "Beauty, care and routines."
+    "description": "Beauty, care and routines.",
+    "subcategories": [
+      "Skincare",
+      "Beauty Routines"
+    ]
   },
   {
     "name": "Travel",
-    "description": "Places, journeys and discoveries."
+    "description": "Places, journeys and discoveries.",
+    "subcategories": [
+      "Places to Visit",
+      "Travel Notes"
+    ]
   },
   {
     "name": "Food",
-    "description": "Food, recipes and dining experiences."
+    "description": "Food, recipes and dining experiences.",
+    "subcategories": [
+      "Recipes",
+      "Dining"
+    ]
   },
   {
     "name": "Entertainment",
-    "description": "Film, music and culture."
+    "description": "Film, music and culture.",
+    "subcategories": [
+      "Film & Music",
+      "Culture"
+    ]
   },
   {
     "name": "Everyday Life",
-    "description": "Ordinary moments and daily living."
+    "description": "Ordinary moments and daily living.",
+    "subcategories": [
+      "Daily Notes",
+      "Special Moments"
+    ]
   },
   {
     "name": "Inspiration",
-    "description": "Ideas, reflections and encouragement."
+    "description": "Ideas, reflections and encouragement.",
+    "subcategories": [
+      "Reflections",
+      "Motivation"
+    ]
   },
   {
     "name": "Personal Experiences",
-    "description": "Stories and experiences shared in Tracey's own words."
+    "description": "Stories and experiences shared in Tracey's own words.",
+    "subcategories": [
+      "Life Stories",
+      "Lessons Learned"
+    ]
   }
 ]
