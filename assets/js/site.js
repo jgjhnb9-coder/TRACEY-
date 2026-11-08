@@ -12,6 +12,7 @@ function renderCards(target,posts){if(!target)return;target.replaceChildren();if
 async function init(){
 const [settings,postsRaw,categoriesRaw,galleryRaw]=await Promise.all([json("content/settings.json",{}),json("content/posts.json",[]),json("content/categories.json",[]),json("content/gallery.json",[])]);
 const posts=published(postsRaw),categories=Array.isArray(categoriesRaw)?categoriesRaw:[],gallery=Array.isArray(galleryRaw)?galleryRaw:[];
+const aboutBox=$("#about-biography");if(aboutBox&&typeof settings.biography==="string"&&settings.biography.trim()){aboutBox.replaceChildren(make("p","eyebrow","MY STORY, MY WORDS"));settings.biography.trim().split(/\n\s*\n/).filter(Boolean).forEach((paragraph,i)=>aboutBox.append(make(i===0?"h2":"p","",paragraph)));}
 document.querySelectorAll("[data-year]").forEach(n=>n.textContent=String(new Date().getFullYear()));
 const toggle=$(".menu-toggle"),nav=$("#site-nav");if(toggle&&nav)toggle.addEventListener("click",()=>{const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open))});
 renderCards($("#home-posts"),posts.slice(0,3));
