@@ -90,7 +90,7 @@ GitHub repository permissions are the access control. The repository owner, `jgj
 The `admin.html` page is only a convenient set of links and instructions; it does not secure the repository. Never put GitHub tokens, passwords or private credentials in website files.
 
 ## Deployment
-The existing `.github/workflows/static.yml` workflow was retained. It publishes the repository root to GitHub Pages on pushes to `main` and on manual workflow dispatch. Check the repository's **Actions** tab for the run status. In **Settings → Pages**, ensure the source is configured for GitHub Actions. The public project-site URL is normally `https://jgjhnb9-coder.github.io/TRACEY-/` once Pages is enabled and the workflow succeeds.
+The existing `.github/workflows/static.yml` workflow was retained. It publishes the repository root to GitHub Pages on pushes to `main` and on manual workflow dispatch. Check the repository's **Actions** tab for the run status. In [Settings → Pages](https://github.com/jgjhnb9-coder/TRACEY-/settings/pages), ensure the source is configured for **GitHub Actions**. Check [Actions](https://github.com/jgjhnb9-coder/TRACEY-/actions) for the latest run and open its **Deploy** job to confirm it succeeded. The public project-site URL is normally [https://jgjhnb9-coder.github.io/TRACEY-/](https://jgjhnb9-coder.github.io/TRACEY-/) once Pages is enabled and the workflow succeeds. If the Settings or Actions pages show an authorization prompt, sign in using an account with repository access; only an owner/admin can change Pages settings.
 
 ## Technical notes
 - Static HTML/CSS/vanilla JS only; no build command or external backend.
